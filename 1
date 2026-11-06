@@ -1,0 +1,18 @@
+package dev.rafael.posbackend.Model;
+
+import jakarta.persistence.*;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
+
+@Entity
+@Table(name="ticket_order")
+public class TicketOrder {
+  @Id 
+  @GeneratedValue(GenerationType.IDENTITY)
+  private Long id;
+
+  @JdbcTypeCode(SqlTypes.JSON)
+  @Column(name="menu_item", ColumnDefinition="jsonb")
+  private List<TicketLineItems> line_items;
+
+}
